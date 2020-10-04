@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.portal_reminder.view.*
 class PortalsFragment : Fragment() {
 
     private val portals = arrayListOf<Portal>()
-    private val portalAdapter = PortalAdapter(portals)
+    private val portalAdapter = PortalAdapter(portals, { portal : Portal -> reminderClicked(portal)})
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -61,5 +62,9 @@ class PortalsFragment : Fragment() {
             } ?: Log.e("PortalFragment", "Request triggered, but empty portal text!")
 
         }
+    }
+
+    private fun reminderClicked(reminderItem: Portal){
+        Toast.makeText(context, "Clicked: ${reminderItem.portalName}", Toast.LENGTH_LONG).show()
     }
 }
