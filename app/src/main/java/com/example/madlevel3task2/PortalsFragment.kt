@@ -7,26 +7,44 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import com.example.madlevel3task2.databinding.ActivityMainBinding
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_portals.*
+import kotlinx.android.synthetic.main.portal_reminder.view.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class PortalsFragment : Fragment() {
 
-    private lateinit var binding: ActivityMainBinding
     private val portals = arrayListOf<Portal>()
     private val portalAdapter = PortalAdapter(portals)
+
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun databind(reminder: Portal) {
+            itemView.tvReminder.text = reminder.portalName
+            itemView.tvReminderLink.text = reminder.portalLink
+        }
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_portals, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initViews()
+    }
+
+    private fun initViews(){
+        rvPortals.layoutManager = GridLayoutManager(
+            context,
+            2,
+            GridLayoutManager.VERTICAL,
+            false
+        )
+        rvPortals.adapter = portalAdapter
     }
 }

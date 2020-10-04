@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.portal_reminder.view.*
+import com.example.madlevel3task2.databinding.PortalReminderBinding
 
 class PortalAdapter(private val reminders: List<Portal>) : RecyclerView.Adapter<PortalAdapter.ViewHolder>(){
 
@@ -33,9 +33,11 @@ class PortalAdapter(private val reminders: List<Portal>) : RecyclerView.Adapter<
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        val binding = PortalReminderBinding.bind(itemView)
+
         fun databind(reminder: Portal) {
-            itemView.tvReminder.text = reminder.portalName
-            itemView.tvReminderLink.text = reminder.portalLink
+            binding.tvReminder.text = reminder.portalName
+            binding.tvReminderLink.text = reminder.portalLink
         }
     }
 

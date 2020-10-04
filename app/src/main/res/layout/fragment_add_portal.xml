@@ -8,8 +8,8 @@
 
     <EditText
         android:id="@+id/input_title"
-        android:layout_width="390dp"
-        android:layout_height="53dp"
+        android:layout_width="333dp"
+        android:layout_height="58dp"
         android:ems="10"
         android:hint="Title"
         android:inputType="textPersonName"
@@ -19,8 +19,8 @@
 
     <EditText
         android:id="@+id/input_link"
-        android:layout_width="390dp"
-        android:layout_height="53dp"
+        android:layout_width="333dp"
+        android:layout_height="62dp"
         android:ems="10"
         android:hint="Url"
         android:inputType="textPersonName"
@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/btn_add_portal"
-        android:layout_width="387dp"
+        android:layout_width="286dp"
         android:layout_height="60dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#443FD1"
