@@ -1,5 +1,6 @@
 package com.example.madlevel3task2
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -65,6 +67,10 @@ class PortalsFragment : Fragment() {
     }
 
     private fun reminderClicked(reminderItem: Portal){
-        Toast.makeText(context, "Clicked: ${reminderItem.portalName}", Toast.LENGTH_LONG).show()
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent = builder.build()
+        context?.let {
+            customTabsIntent.launchUrl(it, Uri.parse(Uri.decode(reminderItem.portalLink)))
+        }
     }
 }
