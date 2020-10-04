@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        fabToggler()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -44,4 +46,15 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    private fun fabToggler() {
+        navController.addOnDestinationChangedListener { _,       destination, _ ->
+            if (destination.id in arrayOf(R.id.addPortalFragment)) {
+                fab.hide()
+            } else {
+                fab.show()
+            }
+        }
+    }
+
 }
